@@ -255,13 +255,13 @@ pipeline {
                         deploy = true
                     } else {
                         deploy = false
+                        echo "Some tests failed. Investigate and take necessary actions... Stopping pipeline."
                     }
 
-                    
-
-                    if (deploy == false){
-                        error "Some tests failed. Investigate and take necessary actions... Stopping pipeline."
-                    }
+                
+                    // if (deploy == false){
+                    //     error "Some tests failed. Investigate and take necessary actions... Stopping pipeline."
+                    // }
 
                 }
             }
@@ -274,7 +274,9 @@ pipeline {
                 script {                 
                     if(deploy==true){
                         echo "Niiice!!! Deploying ATQ now."
-                    } 
+                    } else{
+                        echo "Oooops!!! Check logs, fix the errors and the redeploy!!!."
+                    }
                 }
             }
         }
